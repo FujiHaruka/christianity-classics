@@ -11,6 +11,7 @@
   "dependencies": {
     "fs-extra": "^1.0.0",
     "google-translate": "^1.0.7",
+    "json-loader": "^0.5.4",
     "mkdirp": "^0.5.1",
     "sentence-splitter": "^2.1.1"
   }
