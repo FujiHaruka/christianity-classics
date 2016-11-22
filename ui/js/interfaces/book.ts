@@ -8,7 +8,8 @@ export interface Book {
   directory: string
   author: EnJa,
   writtenYear?: string,
-  description?: string
+  description?: string,
+  originalUrl?: string
 }
 
 export interface Chapter {

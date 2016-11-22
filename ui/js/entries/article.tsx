@@ -4,20 +4,23 @@ import Header from '../components/header'
 import Content from '../components/content'
 import DualSentence from '../components/dual_sentence'
 import { Sentence } from '../interfaces/book'
-import { getBookTitle, getChapterTitle } from '../helpers/util'
+import { getBook, getChapterTitle } from '../helpers/util'
 
 interface Props {}
 
 class Top extends React.Component<Props, {}> {
   render () {
-    let bookTitle = getBookTitle(Src)
+    let book = getBook(Src)
+    if (!book) {
+      return <div>Not found the article.</div>
+    }
     let chapterTitle = getChapterTitle(Src)
     return (
       <div>
         <Header/>
         <Content>
           <div className='breadcrumb'>
-            <a href='/'>TOP</a> > <a href='..'>{bookTitle.ja}</a> > {chapterTitle.ja}
+            <a href='/'>TOP</a> > <a href='..'>{book.title.ja}</a> > {chapterTitle.ja}
           </div>
 
           <h2 className='chapter-title'>{chapterTitle.ja}</h2>
