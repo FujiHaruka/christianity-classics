@@ -1,0 +1,27 @@
+.paragraph {
+  margin-bottom: 1em;
+}
+
+.dual-sentence {
+  display: inline-block;
+  position: relative;
+  cursor: default;
+  line-height: 1.3em;
+  .japanese {
+    display: inline-block;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+  }
+  .japanese:hover {
+    background: rgba($app-color, 0.1);
+  }
+  .original {
+    position: absolute;
+    left: 0;
+    bottom: 1.4em;
+    border: 1px solid #999;
+    padding: 0.2em;
+    background: white;
+  }
+}
+
