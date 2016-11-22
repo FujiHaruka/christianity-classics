@@ -13,7 +13,7 @@ class BookList extends React.Component<Props, {}> {
       <div className='book-list'>
         {Src.map((book: Book) => (
           <div className='list-item' key={book.id}>
-            <a href={`./${book.directory}`}>{book.title.ja}</a> ({book.author.ja})
+            <a href={`./${book.directory}`}>{book.title.ja}</a> ({book.author.ja} {book.writtenYear || ''} {book.description || ''})
           </div>
         ))}
       </div>

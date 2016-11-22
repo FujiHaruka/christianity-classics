@@ -11,9 +11,16 @@
     display: inline-block;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
+    cursor: pointer;
   }
   .japanese:hover {
     background: rgba($app-color, 0.1);
+  }
+  .fixed {
+    background: rgba($app-color, 0.2);
+  }
+  .fixed:hover {
+    background: rgba($app-color, 0.2);
   }
   .original {
     position: absolute;
@@ -24,4 +31,3 @@
     background: white;
   }
 }
-

@@ -7,6 +7,8 @@ export interface Book {
   title: EnJa
   directory: string
   author: EnJa,
+  writtenYear?: string,
+  description?: string
 }
 
 export interface Chapter {
@@ -20,4 +22,3 @@ export interface Sentence {
   en: string,
   ja: string
 }
-

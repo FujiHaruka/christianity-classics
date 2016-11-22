@@ -55,12 +55,12 @@ const JsConfigs = () => {
   }
   {
     let entry = join(__dirname, 'ui/js/entries/book.tsx')
-    let output = join(__dirname, 'public/example')
+    let output = join(__dirname, 'public/the_epistle_of_barnabas')
     configs.push(JsConfig(entry, output))
   }
   {
     let entry = join(__dirname, 'ui/js/entries/article.tsx')
-    let output = join(__dirname, 'public/example/chapter_1')
+    let output = join(__dirname, 'public/the_epistle_of_barnabas/chapter_1')
     configs.push(JsConfig(entry, output))
   }
   return configs

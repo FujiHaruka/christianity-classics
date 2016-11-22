@@ -13,6 +13,7 @@ class Top extends React.Component<Props, {}> {
       <div>
         <Header/>
         <Content>
+          <h2>本の一覧</h2>
           <BookList/>
         </Content>
       </div>

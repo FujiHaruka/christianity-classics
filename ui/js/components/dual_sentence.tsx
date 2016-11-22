@@ -10,7 +10,8 @@ interface State {
   show?: boolean,
   originalStyle?: {
     bottom: string
-  }
+  },
+  fixed?: boolean
 }
 
 class DualSentence extends React.Component<Props, State> {
@@ -18,6 +19,7 @@ class DualSentence extends React.Component<Props, State> {
     super(arg)
     this.state = {
       show: false,
+      fixed: false,
       originalStyle: {
         bottom: ''
       }
@@ -32,16 +34,15 @@ class DualSentence extends React.Component<Props, State> {
       <div className='dual-sentence'>
         <div className={c('original', show ? 'visible' : 'hidden')}
              id={`original-sentence-${id}`}
-             onMouseEnter={s.showOriginal.bind(s)}
-             onMouseLeave={s.hideOriginal.bind(s)}
              style={originalStyle}
              >
           {en}
         </div>
-        <div className='japanese'
+        <div className={c('japanese', this.state.fixed ? 'fixed' : '')}
              id={`japanese-sentence-${id}`}
              onMouseEnter={s.showOriginal.bind(s)}
              onMouseOut={s.hideOriginal.bind(s)}
+             onClick={s.toggleFixed.bind(s)}
              >
           {ja}
         </div>
@@ -62,6 +63,13 @@ class DualSentence extends React.Component<Props, State> {
     })
   }
 
+  toggleFixed () {
+    console.log('to')
+    this.setState({
+      fixed: !this.state.fixed
+    })
+  }
+
   showOriginal () {
     this.setState({
       show: true
@@ -69,9 +77,13 @@ class DualSentence extends React.Component<Props, State> {
   }
 
   hideOriginal () {
-    this.setState({
-      show: false
-    })
+    if (this.state.fixed) {
+      return
+    } else {
+      this.setState({
+        show: false
+      })
+    }
   }
 }
 
