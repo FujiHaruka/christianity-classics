@@ -7,7 +7,7 @@ class Header extends React.Component<Props, {}> {
   render () {
     return (
       <div className='header'>
-        <h1 className='title'><a href='/'>{loc.SITE_NAME}</a></h1>
+        <h1 className='title'><a href={loc.SUB_DIRECTORY}>{loc.SITE_NAME}</a></h1>
       </div>
     )
   }
