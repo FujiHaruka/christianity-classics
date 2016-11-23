@@ -14,7 +14,7 @@ const bookData = require('../helper/book_data')
 
 const SRC_DIR = join(__dirname, '../src')
 const PUBLIC_DIR = join(__dirname, '../docs')
-const { SITE_NAME } = loc
+const { SITE_NAME, SUB_DIRECTORY } = loc
 
 function buildHtml (srcDir) {
   return co(function * () {
@@ -25,7 +25,7 @@ function buildHtml (srcDir) {
     // Top
     yield output(template({
       title: SITE_NAME,
-      subdir: '/christianity-classics'
+      subdir: SUB_DIRECTORY
     }), {
       url: '/'
     })
@@ -33,7 +33,7 @@ function buildHtml (srcDir) {
     for (let book of books) {
       yield output(template({
         title: `${book.title.ja} | ${SITE_NAME}`,
-        subdir: '/christianity-classics'
+        subdir: SUB_DIRECTORY
       }), {
         url: book.directory
       })
@@ -41,7 +41,7 @@ function buildHtml (srcDir) {
       for (let chapter of book.chapters) {
         yield output(template({
           title: `${chapter.title.ja} | ${book.title.ja} | ${SITE_NAME}`,
-          subdir: '/christianity-classics'
+          subdir: SUB_DIRECTORY
         }), {
           url: join(book.directory, chapter.directory)
         })

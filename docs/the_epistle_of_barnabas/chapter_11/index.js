@@ -96,6 +96,15 @@
 
 /***/ },
 /* 2 */
+/***/ function(module, exports) {
+
+	module.exports = {
+		"SITE_NAME": "キリスト教古典（機械翻訳）",
+		"SUB_DIRECTORY": "/christianity-classics"
+	};
+
+/***/ },
+/* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -149,14 +158,6 @@
 
 
 /***/ },
-/* 3 */
-/***/ function(module, exports) {
-
-	module.exports = {
-		"SITE_NAME": "キリスト教古典（機械翻訳）"
-	};
-
-/***/ },
 /* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -186,7 +187,7 @@
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var React = __webpack_require__(1);
-	var c = __webpack_require__(2);
+	var c = __webpack_require__(3);
 	var DualSentence = (function (_super) {
 	    __extends(DualSentence, _super);
 	    function DualSentence(arg) {
@@ -257,7 +258,7 @@
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var React = __webpack_require__(1);
-	var loc = __webpack_require__(3);
+	var loc = __webpack_require__(2);
 	var Header = (function (_super) {
 	    __extends(Header, _super);
 	    function Header() {
@@ -282,7 +283,7 @@
 
 	"use strict";
 	var React = __webpack_require__(1);
-	var ReactDOM = __webpack_require__(9);
+	var ReactDOM = __webpack_require__(10);
 	function entry(App) {
 	    var rootElement = document.getElementById('site');
 	    document.addEventListener('DOMContentLoaded', function () {
@@ -295,14 +296,14 @@
 
 /***/ },
 /* 8 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	// root がサブディレクトリになるなら変更しなくてはならない
+	var SUB_DIRECTORY = __webpack_require__(9).SUB_DIRECTORY;
 	function getBook(src) {
 	    var books = src.books;
 	    var paths = window.location.pathname.split('/').filter(function (path) { return path.length > 0; });
-	    var bookDir = paths[0];
+	    var bookDir = paths[1]; // rootがサブディレクトリのとき
 	    var book = books.find(function (b) { return b.directory === bookDir; });
 	    return book;
 	}
@@ -310,7 +311,7 @@
 	function getChapterTitle(src) {
 	    var chapters = src.chapters;
 	    var paths = window.location.pathname.split('/').filter(function (path) { return path.length > 0; });
-	    var chapterDir = paths[1];
+	    var chapterDir = paths[2];
 	    var chapter = chapters.find(function (c) { return c.directory === chapterDir; });
 	    return chapter ? chapter.title : { en: '', ja: '' };
 	}
@@ -319,6 +320,13 @@
 
 /***/ },
 /* 9 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(2)
+
+
+/***/ },
+/* 10 */
 /***/ function(module, exports) {
 
 	module.exports = ReactDOM;

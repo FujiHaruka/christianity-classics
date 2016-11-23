@@ -84,7 +84,8 @@
 /***/ function(module, exports) {
 
 	module.exports = {
-		"SITE_NAME": "キリスト教古典（機械翻訳）"
+		"SITE_NAME": "キリスト教古典（機械翻訳）",
+		"SUB_DIRECTORY": "/christianity-classics"
 	};
 
 /***/ },
