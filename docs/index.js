@@ -155,6 +155,7 @@
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var React = __webpack_require__(1);
+	var util_1 = __webpack_require__(7);
 	var loc = __webpack_require__(2);
 	var Header = (function (_super) {
 	    __extends(Header, _super);
@@ -164,7 +165,7 @@
 	    Header.prototype.render = function () {
 	        return (React.createElement("div", {className: 'header'}, 
 	            React.createElement("h1", {className: 'title'}, 
-	                React.createElement("a", {href: '/'}, loc.SITE_NAME)
+	                React.createElement("a", {href: util_1.topUrl()}, loc.SITE_NAME)
 	            )
 	        ));
 	    };
@@ -180,7 +181,7 @@
 
 	"use strict";
 	var React = __webpack_require__(1);
-	var ReactDOM = __webpack_require__(7);
+	var ReactDOM = __webpack_require__(9);
 	function entry(App) {
 	    var rootElement = document.getElementById('site');
 	    document.addEventListener('DOMContentLoaded', function () {
@@ -193,6 +194,41 @@
 
 /***/ },
 /* 7 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var SUB_DIRECTORY = __webpack_require__(8).SUB_DIRECTORY;
+	function getBook(src) {
+	    var books = src.books;
+	    var paths = window.location.pathname.split('/').filter(function (path) { return path.length > 0; });
+	    var bookDir = paths[1]; // rootがサブディレクトリのとき
+	    var book = books.find(function (b) { return b.directory === bookDir; });
+	    return book;
+	}
+	exports.getBook = getBook;
+	function getChapterTitle(src) {
+	    var chapters = src.chapters;
+	    var paths = window.location.pathname.split('/').filter(function (path) { return path.length > 0; });
+	    var chapterDir = paths[2];
+	    var chapter = chapters.find(function (c) { return c.directory === chapterDir; });
+	    return chapter ? chapter.title : { en: '', ja: '' };
+	}
+	exports.getChapterTitle = getChapterTitle;
+	function topUrl() {
+	    return SUB_DIRECTORY || '/';
+	}
+	exports.topUrl = topUrl;
+
+
+/***/ },
+/* 8 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(2)
+
+
+/***/ },
+/* 9 */
 /***/ function(module, exports) {
 
 	module.exports = ReactDOM;

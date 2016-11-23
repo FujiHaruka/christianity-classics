@@ -4,7 +4,7 @@ import Header from '../components/header'
 import Content from '../components/content'
 import DualSentence from '../components/dual_sentence'
 import { Sentence } from '../interfaces/book'
-import { getBook, getChapterTitle } from '../helpers/util'
+import { getBook, getChapterTitle, topUrl } from '../helpers/util'
 
 interface Props {}
 
@@ -20,7 +20,7 @@ class Top extends React.Component<Props, {}> {
         <Header/>
         <Content>
           <div className='breadcrumb'>
-            <a href='/'>TOP</a> > <a href='..'>{book.title.ja}</a> > {chapterTitle.ja}
+            <a href={topUrl()}>TOP</a> > <a href='..'>{book.title.ja}</a> > {chapterTitle.ja}
           </div>
 
           <h2 className='chapter-title'>{chapterTitle.ja}</h2>

@@ -51,11 +51,11 @@
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var React = __webpack_require__(1);
-	var entry_1 = __webpack_require__(6);
-	var header_1 = __webpack_require__(5);
-	var content_1 = __webpack_require__(4);
-	var chapter_list_1 = __webpack_require__(3);
-	var util_1 = __webpack_require__(7);
+	var entry_1 = __webpack_require__(7);
+	var header_1 = __webpack_require__(6);
+	var content_1 = __webpack_require__(5);
+	var chapter_list_1 = __webpack_require__(4);
+	var util_1 = __webpack_require__(3);
 	var BookPage = (function (_super) {
 	    __extends(BookPage, _super);
 	    function BookPage() {
@@ -71,7 +71,7 @@
 	            React.createElement(header_1.default, null), 
 	            React.createElement(content_1.default, null, 
 	                React.createElement("div", {className: 'breadcrumb'}, 
-	                    React.createElement("a", {href: '/'}, "TOP"), 
+	                    React.createElement("a", {href: util_1.topUrl()}, "TOP"), 
 	                    " > ", 
 	                    title.ja), 
 	                React.createElement("h2", {className: 'book-title'}, title.ja), 
@@ -105,6 +105,34 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
+	var SUB_DIRECTORY = __webpack_require__(8).SUB_DIRECTORY;
+	function getBook(src) {
+	    var books = src.books;
+	    var paths = window.location.pathname.split('/').filter(function (path) { return path.length > 0; });
+	    var bookDir = paths[1]; // rootがサブディレクトリのとき
+	    var book = books.find(function (b) { return b.directory === bookDir; });
+	    return book;
+	}
+	exports.getBook = getBook;
+	function getChapterTitle(src) {
+	    var chapters = src.chapters;
+	    var paths = window.location.pathname.split('/').filter(function (path) { return path.length > 0; });
+	    var chapterDir = paths[2];
+	    var chapter = chapters.find(function (c) { return c.directory === chapterDir; });
+	    return chapter ? chapter.title : { en: '', ja: '' };
+	}
+	exports.getChapterTitle = getChapterTitle;
+	function topUrl() {
+	    return SUB_DIRECTORY || '/';
+	}
+	exports.topUrl = topUrl;
+
+
+/***/ },
+/* 4 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
 	var __extends = (this && this.__extends) || function (d, b) {
 	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
 	    function __() { this.constructor = d; }
@@ -133,7 +161,7 @@
 
 
 /***/ },
-/* 4 */
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -152,7 +180,7 @@
 
 
 /***/ },
-/* 5 */
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -162,6 +190,7 @@
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var React = __webpack_require__(1);
+	var util_1 = __webpack_require__(3);
 	var loc = __webpack_require__(2);
 	var Header = (function (_super) {
 	    __extends(Header, _super);
@@ -171,7 +200,7 @@
 	    Header.prototype.render = function () {
 	        return (React.createElement("div", {className: 'header'}, 
 	            React.createElement("h1", {className: 'title'}, 
-	                React.createElement("a", {href: '/'}, loc.SITE_NAME)
+	                React.createElement("a", {href: util_1.topUrl()}, loc.SITE_NAME)
 	            )
 	        ));
 	    };
@@ -182,7 +211,7 @@
 
 
 /***/ },
-/* 6 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -196,30 +225,6 @@
 	}
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = entry;
-
-
-/***/ },
-/* 7 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var SUB_DIRECTORY = __webpack_require__(8).SUB_DIRECTORY;
-	function getBook(src) {
-	    var books = src.books;
-	    var paths = window.location.pathname.split('/').filter(function (path) { return path.length > 0; });
-	    var bookDir = paths[1]; // rootがサブディレクトリのとき
-	    var book = books.find(function (b) { return b.directory === bookDir; });
-	    return book;
-	}
-	exports.getBook = getBook;
-	function getChapterTitle(src) {
-	    var chapters = src.chapters;
-	    var paths = window.location.pathname.split('/').filter(function (path) { return path.length > 0; });
-	    var chapterDir = paths[2];
-	    var chapter = chapters.find(function (c) { return c.directory === chapterDir; });
-	    return chapter ? chapter.title : { en: '', ja: '' };
-	}
-	exports.getChapterTitle = getChapterTitle;
 
 
 /***/ },

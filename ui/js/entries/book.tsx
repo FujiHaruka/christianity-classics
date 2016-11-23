@@ -3,7 +3,7 @@ import entry from '../helpers/entry'
 import Header from '../components/header'
 import Content from '../components/content'
 import ChapterList from '../components/chapter_list'
-import { getBook } from '../helpers/util'
+import { getBook, topUrl } from '../helpers/util'
 
 interface Props {}
 
@@ -19,7 +19,7 @@ class BookPage extends React.Component<Props, {}> {
         <Header/>
         <Content>
           <div className='breadcrumb'>
-            <a href='/'>TOP</a> > {title.ja}
+            <a href={topUrl()}>TOP</a> > {title.ja}
           </div>
 
           <h2 className='book-title'>{title.ja}</h2>

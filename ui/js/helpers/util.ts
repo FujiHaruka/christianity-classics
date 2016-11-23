@@ -17,3 +17,7 @@ export function getChapterTitle (src): EnJa {
   let chapter = chapters.find((c) => c.directory === chapterDir)
   return chapter ? chapter.title : { en: '', ja: '' }
 }
+
+export function topUrl (): string {
+  return SUB_DIRECTORY || '/'
+}
