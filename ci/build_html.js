@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * src/book から HTML ファイルを生成して public に出力する
+ * src/book から HTML ファイルを生成して docs に出力する
  */
 const Hbs = require('handlebars')
 const co = require('co')
@@ -13,7 +13,7 @@ const loc = require('../src/loc/index.json')
 const bookData = require('../helper/book_data')
 
 const SRC_DIR = join(__dirname, '../src')
-const PUBLIC_DIR = join(__dirname, '../public')
+const PUBLIC_DIR = join(__dirname, '../docs')
 const { SITE_NAME } = loc
 
 function buildHtml (srcDir) {

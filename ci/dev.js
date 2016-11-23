@@ -13,7 +13,7 @@ const HOST = 'localhost'
 co(function * () {
   const compiler = webpack(config)
   let server = new DevServer(compiler, {
-    contentBase: 'public',
+    contentBase: 'docs',
     hot: true,
     historyApiFallback: false,
     compress: false,

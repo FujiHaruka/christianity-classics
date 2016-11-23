@@ -47,7 +47,7 @@ const JsConfigs = () => {
   let configs = []
   {
     let entry = join(__dirname, 'ui/js/entries/top.tsx')
-    let output = join(__dirname, 'public')
+    let output = join(__dirname, 'docs')
     let filename = 'index.js'
     configs.push(JsConfig(entry, output, filename))
   }
@@ -70,7 +70,7 @@ const CssConfig = () => {
   return {
     entry: join(__dirname, 'ui/scss/index.scss'),
     output: {
-      path: join(__dirname, 'public/css'),
+      path: join(__dirname, 'docs/css'),
       filename: 'index.css',
       publicPath: '/css/'
     },

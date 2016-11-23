@@ -11,8 +11,8 @@ const execAsync = promisify(exec)
 process.chdir(__dirname + '/..')
 
 co(function * () {
-  yield mkdirpAsync('public/js')
-  yield mkdirpAsync('public/css')
+  yield mkdirpAsync('docs/js')
+  yield mkdirpAsync('docs/css')
   let out = yield execAsync('./ci/externals.sh')
   console.log(out)
 }).catch(err => console.error(err))

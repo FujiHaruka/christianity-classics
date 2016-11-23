@@ -29,11 +29,11 @@ co(function * () {
     let books = bookData(srcDir)
     for (let book of books) {
       let { directory: bookDir, chapters } = book
-      yield execAsync(`cp tmp/book.js public/${bookDir}/index.js`)
+      yield execAsync(`cp tmp/book.js docs/${bookDir}/index.js`)
 
       for (let chapter of chapters) {
         let { directory: chapterDir } = chapter
-        yield execAsync(`cp tmp/article.js public/${bookDir}/${chapterDir}/index.js`)
+        yield execAsync(`cp tmp/article.js docs/${bookDir}/${chapterDir}/index.js`)
       }
     }
   }

@@ -32,18 +32,18 @@ function SrcConfig () {
   let books = bookData(SRC_DIR)
   {
     let entry = SRC_DIR
-    let output = 'public'
+    let output = 'docs'
     configs.push(JsConfig(entry, output))
   }
   for (let book of books) {
     {
       let entry = join(SRC_DIR, book.directory)
-      let output = join('public', book.directory)
+      let output = join('docs', book.directory)
       configs.push(JsConfig(entry, output))
     }
     for (let chapter of book.chapters) {
       let entry = join(SRC_DIR, book.directory, chapter.directory)
-      let output = join('public', book.directory, chapter.directory)
+      let output = join('docs', book.directory, chapter.directory)
       configs.push(JsConfig(entry, output))
     }
   }
