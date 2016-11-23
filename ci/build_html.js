@@ -24,21 +24,24 @@ function buildHtml (srcDir) {
     let template = Hbs.compile(htmlHbs)
     // Top
     yield output(template({
-      title: SITE_NAME
+      title: SITE_NAME,
+      subdir: '/christianity-classics'
     }), {
       url: '/'
     })
     // book
     for (let book of books) {
       yield output(template({
-        title: `${book.title.ja} | ${SITE_NAME}`
+        title: `${book.title.ja} | ${SITE_NAME}`,
+        subdir: '/christianity-classics'
       }), {
         url: book.directory
       })
       // Article
       for (let chapter of book.chapters) {
         yield output(template({
-          title: `${chapter.title.ja} | ${book.title.ja} | ${SITE_NAME}`
+          title: `${chapter.title.ja} | ${book.title.ja} | ${SITE_NAME}`,
+          subdir: '/christianity-classics'
         }), {
           url: join(book.directory, chapter.directory)
         })
