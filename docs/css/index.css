@@ -33,8 +33,6 @@
     padding-top: 0.5em;
     padding-bottom: 0.5em;
     cursor: pointer; }
-  .dual-sentence .japanese:hover {
-    background: rgba(51, 168, 39, 0.1); }
   .dual-sentence .fixed {
     background: rgba(51, 168, 39, 0.2); }
   .dual-sentence .fixed:hover {
@@ -46,6 +44,10 @@
     border: 1px solid #999;
     padding: 0.2em;
     background: white; }
+
+@media only screen and (min-device-width: 1024px) {
+  .dual-sentence .japanese:hover {
+    background: rgba(51, 168, 39, 0.1); } }
 
 body, html {
   padding: 0;

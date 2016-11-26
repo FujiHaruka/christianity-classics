@@ -13,9 +13,6 @@
     padding-bottom: 0.5em;
     cursor: pointer;
   }
-  .japanese:hover {
-    background: rgba($app-color, 0.1);
-  }
   .fixed {
     background: rgba($app-color, 0.2);
   }
@@ -29,5 +26,12 @@
     border: 1px solid #999;
     padding: 0.2em;
     background: white;
+  }
+}
+
+@media only screen
+ and (min-device-width: 1024px) {
+  .dual-sentence .japanese:hover {
+    background: rgba($app-color, 0.1);
   }
 }

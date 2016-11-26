@@ -55,7 +55,7 @@
 	var header_1 = __webpack_require__(7);
 	var content_1 = __webpack_require__(5);
 	var dual_sentence_1 = __webpack_require__(6);
-	var util_1 = __webpack_require__(3);
+	var util_1 = __webpack_require__(2);
 	var Top = (function (_super) {
 	    __extends(Top, _super);
 	    function Top() {
@@ -96,15 +96,6 @@
 
 /***/ },
 /* 2 */
-/***/ function(module, exports) {
-
-	module.exports = {
-		"SITE_NAME": "キリスト教古典（機械翻訳）",
-		"SUB_DIRECTORY": "/christianity-classics"
-	};
-
-/***/ },
-/* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -129,7 +120,20 @@
 	    return SUB_DIRECTORY || '/';
 	}
 	exports.topUrl = topUrl;
+	exports.IS_TOUCH_DEVICE = (function () {
+	    var devices = ['iPhone', 'iPod', 'Android', 'iPad'];
+	    return devices.some(function (device) { return navigator.userAgent.indexOf(device) > 0; });
+	})();
 
+
+/***/ },
+/* 3 */
+/***/ function(module, exports) {
+
+	module.exports = {
+		"SITE_NAME": "キリスト教古典（機械翻訳）",
+		"SUB_DIRECTORY": "/christianity-classics"
+	};
 
 /***/ },
 /* 4 */
@@ -216,6 +220,7 @@
 	};
 	var React = __webpack_require__(1);
 	var c = __webpack_require__(4);
+	var util_1 = __webpack_require__(2);
 	var DualSentence = (function (_super) {
 	    __extends(DualSentence, _super);
 	    function DualSentence(arg) {
@@ -234,7 +239,7 @@
 	        var _b = s.state, show = _b.show, originalStyle = _b.originalStyle;
 	        return (React.createElement("div", {className: 'dual-sentence'}, 
 	            React.createElement("div", {className: c('original', show ? 'visible' : 'hidden'), id: "original-sentence-" + id, style: originalStyle}, en), 
-	            React.createElement("div", {className: c('japanese', this.state.fixed ? 'fixed' : ''), id: "japanese-sentence-" + id, onMouseEnter: s.showOriginal.bind(s), onMouseOut: s.hideOriginal.bind(s), onClick: s.toggleFixed.bind(s)}, ja)));
+	            React.createElement("div", {className: c('japanese', this.state.fixed ? 'fixed' : ''), id: "japanese-sentence-" + id, onMouseOver: util_1.IS_TOUCH_DEVICE ? null : s.showOriginal.bind(s), onMouseOut: util_1.IS_TOUCH_DEVICE ? null : s.hideOriginal.bind(s), onClick: util_1.IS_TOUCH_DEVICE ? s.toggleShow.bind(s) : s.toggleFixed.bind(s)}, ja)));
 	    };
 	    DualSentence.prototype.componentDidMount = function () {
 	        var id = this.props.sentence.id;
@@ -249,8 +254,13 @@
 	        });
 	    };
 	    DualSentence.prototype.toggleFixed = function () {
-	        console.log('to');
 	        this.setState({
+	            fixed: !this.state.fixed
+	        });
+	    };
+	    DualSentence.prototype.toggleShow = function () {
+	        this.setState({
+	            show: !this.state.show,
 	            fixed: !this.state.fixed
 	        });
 	    };
@@ -286,8 +296,8 @@
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var React = __webpack_require__(1);
-	var util_1 = __webpack_require__(3);
-	var loc = __webpack_require__(2);
+	var util_1 = __webpack_require__(2);
+	var loc = __webpack_require__(3);
 	var Header = (function (_super) {
 	    __extends(Header, _super);
 	    function Header() {
@@ -327,7 +337,7 @@
 /* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(2)
+	module.exports = __webpack_require__(3)
 
 
 /***/ },

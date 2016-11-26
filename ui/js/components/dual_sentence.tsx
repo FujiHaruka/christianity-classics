@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { Sentence } from '../interfaces/book'
 import * as c from 'classnames'
+import { IS_TOUCH_DEVICE } from '../helpers/util'
 
 interface Props {
   sentence: Sentence
@@ -40,9 +41,9 @@ class DualSentence extends React.Component<Props, State> {
         </div>
         <div className={c('japanese', this.state.fixed ? 'fixed' : '')}
              id={`japanese-sentence-${id}`}
-             onMouseEnter={s.showOriginal.bind(s)}
-             onMouseOut={s.hideOriginal.bind(s)}
-             onClick={s.toggleFixed.bind(s)}
+             onMouseOver={IS_TOUCH_DEVICE ? null : s.showOriginal.bind(s)}
+             onMouseOut={IS_TOUCH_DEVICE ? null : s.hideOriginal.bind(s)}
+             onClick={IS_TOUCH_DEVICE ? s.toggleShow.bind(s) : s.toggleFixed.bind(s)}
              >
           {ja}
         </div>
@@ -64,8 +65,14 @@ class DualSentence extends React.Component<Props, State> {
   }
 
   toggleFixed () {
-    console.log('to')
     this.setState({
+      fixed: !this.state.fixed
+    })
+  }
+
+  toggleShow () {
+    this.setState({
+      show: !this.state.show,
       fixed: !this.state.fixed
     })
   }

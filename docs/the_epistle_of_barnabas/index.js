@@ -126,6 +126,10 @@
 	    return SUB_DIRECTORY || '/';
 	}
 	exports.topUrl = topUrl;
+	exports.IS_TOUCH_DEVICE = (function () {
+	    var devices = ['iPhone', 'iPod', 'Android', 'iPad'];
+	    return devices.some(function (device) { return navigator.userAgent.indexOf(device) > 0; });
+	})();
 
 
 /***/ },

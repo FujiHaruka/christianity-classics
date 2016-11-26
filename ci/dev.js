@@ -8,7 +8,7 @@ const DevServer = require('webpack-dev-server')
 const config = require('../webpack.config.dev')
 
 const PORT = 3000
-const HOST = 'localhost'
+const HOST = '192.168.0.7'
 
 co(function * () {
   const compiler = webpack(config)
@@ -18,6 +18,14 @@ co(function * () {
     historyApiFallback: false,
     compress: false,
     staticOptions: {},
+
+    proxy: {
+      // 本番が github.io のサブディレクトリなので
+      '/christianity-classics': {
+        target: `http://${HOST}:${PORT}`,
+        pathRewrite: {'^/christianity-classics' : ''}
+      }
+    },
 
     // webpack-dev-middleware options
     quiet: false,

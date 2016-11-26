@@ -21,3 +21,9 @@ export function getChapterTitle (src): EnJa {
 export function topUrl (): string {
   return SUB_DIRECTORY || '/'
 }
+
+
+export const IS_TOUCH_DEVICE: boolean = ((): boolean => {
+  let devices = ['iPhone', 'iPod', 'Android', 'iPad']
+  return devices.some((device) => navigator.userAgent.indexOf(device) > 0)
+})()
